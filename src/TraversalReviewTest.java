@@ -836,7 +836,7 @@ public class TraversalReviewTest {
             ),
             new TreeNode(6)
         );
-        assertTrue(TraversalReview.hasNonDivisible(root, 3));
+        assertFalse(TraversalReview.hasNonDivisible(root, 3));
     }
 
     /**
@@ -847,7 +847,7 @@ public class TraversalReviewTest {
      *      /     \
      *     6       10
      *
-     * Node 5 not divisible by 3 → false (extended to three levels)
+     * Node 5 not divisible by 3
      */
     @Test
     public void testHasNonDivisible_someNotDivisible() {
@@ -857,7 +857,7 @@ public class TraversalReviewTest {
                 new TreeNode(10)
             )
         );
-        assertFalse(TraversalReview.hasNonDivisible(root, 3));
+        assertTrue(TraversalReview.hasNonDivisible(root, 3));
     }
 
     /**
@@ -868,7 +868,7 @@ public class TraversalReviewTest {
      *      /
      *    -40
      *
-     * All values divisible by 10 (including negatives) → true
+     * All values divisible by 10
      */
     @Test
     public void testHasNonDivisible_negativeAndPositive() {
@@ -879,7 +879,7 @@ public class TraversalReviewTest {
             ),
             new TreeNode(30)
         );
-        assertTrue(TraversalReview.hasNonDivisible(root, 10));
+        assertFalse(TraversalReview.hasNonDivisible(root, 10));
     }
 
     /**
@@ -890,7 +890,7 @@ public class TraversalReviewTest {
      *     /     \
      *    12      20
      *
-     * All values divisible by 4 → true (extended to three levels)
+     * All values divisible by 4 
      */
     @Test
     public void testHasNonDivisible_allDivisibleByFour() {
@@ -900,7 +900,7 @@ public class TraversalReviewTest {
                 new TreeNode(20)
             )
         );
-        assertTrue(TraversalReview.hasNonDivisible(root, 4));
+        assertFalse(TraversalReview.hasNonDivisible(root, 4));
     }
 
     /**
@@ -911,7 +911,7 @@ public class TraversalReviewTest {
      *     /     \
      *    12      15
      *
-     * Node 9 not divisible by 4 → false (extended to three levels)
+     * Node 9 not divisible by 4
      */
     @Test
     public void testHasNonDivisible_mixedDivisibility() {
@@ -921,7 +921,7 @@ public class TraversalReviewTest {
                 new TreeNode(15)
             )
         );
-        assertFalse(TraversalReview.hasNonDivisible(root, 4));
+        assertTrue(TraversalReview.hasNonDivisible(root, 4));
     }
 
     /**
@@ -938,7 +938,6 @@ public class TraversalReviewTest {
      *         -6     0    77
      *
      * k = 3
-     * Result: false (1, 2, 5, etc. not all divisible by 3)
      */
     @Test
     public void testHasNonDivisible_javadocExample() {
@@ -962,7 +961,7 @@ public class TraversalReviewTest {
                 )
             )
         );
-        assertFalse(TraversalReview.hasNonDivisible(root, 3));
+        assertTrue(TraversalReview.hasNonDivisible(root, 3));
     }
 
 
