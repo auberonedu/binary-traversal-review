@@ -99,7 +99,15 @@ public class TraversalReview {
      * @return
      */
     public static int evenMax(TreeNode node) {
-        return Integer.MIN_VALUE;
+        if (node == null){
+            return Integer.MIN_VALUE;
+        }
+        int maxEven = node.data % 2 == 0 ? node.data : Integer.MIN_VALUE;
+        maxEven = Math.max(maxEven, evenMax(node.left));
+        maxEven = Math.max(maxEven, evenMax(node.right));
+        return maxEven;
+
+
     }
 
     /**
@@ -127,7 +135,28 @@ public class TraversalReview {
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
-        return false;
+
+        if (node == null){
+            return true;
+        }
+        //  else if (node.left == null && node.right == null){
+        //     return true;
+        // }
+        
+        
+        if (node.left != null){
+            if (node.data >= node.left.data){
+                return false;
+            }
+        }
+        
+        if (node.right != null){
+            if (node.data >= node.right.data){
+                return false;
+            }
+        }
+        
+        return isIncreasing(node.left) && isIncreasing(node.right);
     } 
 
     /**
@@ -153,7 +182,19 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
-        return false;
+        if (node == null){
+            return true;
+        }
+
+        if (node.left != null && node.right == null){
+            return false;
+        }
+        
+        if (node.left == null && node.right != null){
+            return false;
+        }
+        
+        return  noSingleChildren(node.left) && noSingleChildren(node.right);
     }
 
     /**
