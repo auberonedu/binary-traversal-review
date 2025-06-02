@@ -145,156 +145,156 @@ public class TraversalReviewTest {
     }
 
 
-    // //
-    // // Tests for positiveSum(TreeNode)
-    // //
+    //
+    // Tests for positiveSum(TreeNode)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
-    // @Test
-    // public void testPositiveSum_null() {
-    //     assertEquals(0, TraversalReview.positiveSum(null));
-    // }
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
+    @Test
+    public void testPositiveSum_null() {
+        assertEquals(0, TraversalReview.positiveSum(null));
+    }
 
-    // /**
-    //  * Tree:
-    //  *          -7
-    //  *         /  \
-    //  *       -3   -1
-    //  *       / \
-    //  *     -8  -2
-    //  *
-    //  * All negative values (extended to three levels)
-    //  */
-    // @Test
-    // public void testPositiveSum_allNegative() {
-    //     TreeNode root = new TreeNode(-7,
-    //         new TreeNode(-3,
-    //             new TreeNode(-8),
-    //             new TreeNode(-2)
-    //         ),
-    //         new TreeNode(-1)
-    //     );
-    //     assertEquals(0, TraversalReview.positiveSum(root));
-    // }
+    /**
+     * Tree:
+     *          -7
+     *         /  \
+     *       -3   -1
+     *       / \
+     *     -8  -2
+     *
+     * All negative values (extended to three levels)
+     */
+    @Test
+    public void testPositiveSum_allNegative() {
+        TreeNode root = new TreeNode(-7,
+            new TreeNode(-3,
+                new TreeNode(-8),
+                new TreeNode(-2)
+            ),
+            new TreeNode(-1)
+        );
+        assertEquals(0, TraversalReview.positiveSum(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         9
-    //  *        / \
-    //  *       4   2
-    //  *      /     \
-    //  *     6       3
-    //  *
-    //  * All positive values (extended to three levels)
-    //  */
-    // @Test
-    // public void testPositiveSum_allPositive() {
-    //     TreeNode root = new TreeNode(9,
-    //         new TreeNode(4, new TreeNode(6), null),
-    //         new TreeNode(2, null, new TreeNode(3))
-    //     );
-    //     // Sum = 9 + 4 + 6 + 2 + 3 = 24
-    //     assertEquals(24, TraversalReview.positiveSum(root));
-    // }
+    /**
+     * Tree:
+     *         9
+     *        / \
+     *       4   2
+     *      /     \
+     *     6       3
+     *
+     * All positive values (extended to three levels)
+     */
+    @Test
+    public void testPositiveSum_allPositive() {
+        TreeNode root = new TreeNode(9,
+            new TreeNode(4, new TreeNode(6), null),
+            new TreeNode(2, null, new TreeNode(3))
+        );
+        // Sum = 9 + 4 + 6 + 2 + 3 = 24
+        assertEquals(24, TraversalReview.positiveSum(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *            8
-    //  *           / \
-    //  *         -3   5
-    //  *         /     \
-    //  *       -6       0
-    //  *
-    //  * Mixed positive, negative, zero (three levels)
-    //  */
-    // @Test
-    // public void testPositiveSum_mixedValues() {
-    //     TreeNode root = new TreeNode(8,
-    //         new TreeNode(-3,
-    //             new TreeNode(-6),
-    //             null
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(0)
-    //         )
-    //     );
-    //     // Sum of positives = 8 + 5 = 13 (zero does not contribute)
-    //     assertEquals(13, TraversalReview.positiveSum(root));
-    // }
+    /**
+     * Tree:
+     *            8
+     *           / \
+     *         -3   5
+     *         /     \
+     *       -6       0
+     *
+     * Mixed positive, negative, zero (three levels)
+     */
+    @Test
+    public void testPositiveSum_mixedValues() {
+        TreeNode root = new TreeNode(8,
+            new TreeNode(-3,
+                new TreeNode(-6),
+                null
+            ),
+            new TreeNode(5, null,
+                new TreeNode(0)
+            )
+        );
+        // Sum of positives = 8 + 5 = 13 (zero does not contribute)
+        assertEquals(13, TraversalReview.positiveSum(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *   6
-    //  *    \
-    //  *     -2
-    //  *      \
-    //  *       3
-    //  *
-    //  * Mixed: positive, negative (three levels)
-    //  */
-    // @Test
-    // public void testPositiveSum_chain() {
-    //     TreeNode root = new TreeNode(6, null,
-    //         new TreeNode(-2, null,
-    //             new TreeNode(3)
-    //         )
-    //     );
-    //     // Sum of positives = 6 + 3 = 9
-    //     assertEquals(9, TraversalReview.positiveSum(root));
-    // }
+    /**
+     * Tree:
+     *   6
+     *    \
+     *     -2
+     *      \
+     *       3
+     *
+     * Mixed: positive, negative (three levels)
+     */
+    @Test
+    public void testPositiveSum_chain() {
+        TreeNode root = new TreeNode(6, null,
+            new TreeNode(-2, null,
+                new TreeNode(3)
+            )
+        );
+        // Sum of positives = 6 + 3 = 9
+        assertEquals(9, TraversalReview.positiveSum(root));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  * 
-    //  * Sum of positive values: 2 + 7 + 4 + 1 + 5 + 8 + 33 + 77 = 137
-    //  */
-    // @Test
-    // public void testPositiveSum_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertEquals(137, TraversalReview.positiveSum(root));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     * 
+     * Sum of positive values: 2 + 7 + 4 + 1 + 5 + 8 + 33 + 77 = 137
+     */
+    @Test
+    public void testPositiveSum_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertEquals(137, TraversalReview.positiveSum(root));
+    }
 
 
-    // //
-    // // Tests for evenMax(TreeNode)
-    // //
+    //
+    // Tests for evenMax(TreeNode)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
     // @Test
     // public void testEvenMax_null() {
     //     assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(null));
