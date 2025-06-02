@@ -177,7 +177,7 @@ public class TraversalReview {
      *         -6      0    77
      * 
      * Example k: 3
-     * Result: false (some nodes in the tree have values not divisible by 3. For example, 5)
+     * Result: true (some nodes in the tree have values not divisible by 3. For example, 5)
      * 
      * @param node the root of the tree
      * @param k the value to check for divisibility by
