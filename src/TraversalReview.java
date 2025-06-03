@@ -23,7 +23,8 @@ public class TraversalReview {
      * @return three times the sum of the nodes in the tree
      */
     public static int tripleSum(TreeNode node) {
-        return -1;
+        if(node == null) return 0;
+        return 3 * (node.data + tripleSum(node.left) + tripleSum(node.right));
     }
 
     /**
@@ -50,7 +51,8 @@ public class TraversalReview {
      * @return the sum of the positive values in the tree
      */
     public static int positiveSum(TreeNode node) {
-        return -1;
+        if(node == null || node.data < 0) return 0;
+        return positiveSum(node.left) + positiveSum(node.right);
     }
 
     /**
