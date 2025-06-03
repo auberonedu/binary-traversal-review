@@ -177,9 +177,14 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
-        return false;
-    }
-
+        if(node == null) return true;
+        // note: this strcuture of solving this problem is called guard clauses.
+        if((node.left == null && node.right != null) || (node.left != null && node.right == null)) {
+            return false;
+            }
+            return noSingleChildren(node.left) && noSingleChildren(node.right);
+        }
+    
     /**
      * Returns whether at least one of the values in the tree is zero.
      * 
