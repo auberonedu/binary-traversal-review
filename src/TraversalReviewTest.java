@@ -696,111 +696,111 @@ public class TraversalReviewTest {
     }
 
 
-    // //
-    // // Tests for hasZero(TreeNode)
-    // //
+    //
+    // Tests for hasZero(TreeNode)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
-    // @Test
-    // public void testHasZero_null() {
-    //     assertFalse(TraversalReview.hasZero(null));
-    // }
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
+    @Test
+    public void testHasZero_null() {
+        assertFalse(TraversalReview.hasZero(null));
+    }
 
-    // /**
-    //  * Tree:
-    //  *     0
-    //  *
-    //  * Single zero node (one level)
-    //  */
-    // @Test
-    // public void testHasZero_singleZero() {
-    //     TreeNode root = new TreeNode(0);
-    //     assertTrue(TraversalReview.hasZero(root));
-    // }
+    /**
+     * Tree:
+     *     0
+     *
+     * Single zero node (one level)
+     */
+    @Test
+    public void testHasZero_singleZero() {
+        TreeNode root = new TreeNode(0);
+        assertTrue(TraversalReview.hasZero(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *        5
-    //  *       / \
-    //  *      3   7
-    //  *         /
-    //  *        0
-    //  *
-    //  * Zero in a leaf (three levels)
-    //  */
-    // @Test
-    // public void testHasZero_leafZero() {
-    //     TreeNode root = new TreeNode(5,
-    //         new TreeNode(3),
-    //         new TreeNode(7,
-    //             new TreeNode(0),
-    //             null
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.hasZero(root));
-    // }
+    /**
+     * Tree:
+     *        5
+     *       / \
+     *      3   7
+     *         /
+     *        0
+     *
+     * Zero in a leaf (three levels)
+     */
+    @Test
+    public void testHasZero_leafZero() {
+        TreeNode root = new TreeNode(5,
+            new TreeNode(3),
+            new TreeNode(7,
+                new TreeNode(0),
+                null
+            )
+        );
+        assertTrue(TraversalReview.hasZero(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         5
-    //  *        / \
-    //  *       3   7
-    //  *      /     \
-    //  *     1       9
-    //  *
-    //  * No zero anywhere (extended to three levels)
-    //  */
-    // @Test
-    // public void testHasZero_noZero() {
-    //     TreeNode root = new TreeNode(5,
-    //         new TreeNode(3, new TreeNode(1), null),
-    //         new TreeNode(7, null, new TreeNode(9))
-    //     );
-    //     assertFalse(TraversalReview.hasZero(root));
-    // }
+    /**
+     * Tree:
+     *         5
+     *        / \
+     *       3   7
+     *      /     \
+     *     1       9
+     *
+     * No zero anywhere (extended to three levels)
+     */
+    @Test
+    public void testHasZero_noZero() {
+        TreeNode root = new TreeNode(5,
+            new TreeNode(3, new TreeNode(1), null),
+            new TreeNode(7, null, new TreeNode(9))
+        );
+        assertFalse(TraversalReview.hasZero(root));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  * 
-    //  * Result: true (there is at least one zero)
-    //  */
-    // @Test
-    // public void testHasZero_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.hasZero(root));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     * 
+     * Result: true (there is at least one zero)
+     */
+    @Test
+    public void testHasZero_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertTrue(TraversalReview.hasZero(root));
+    }
 
 
     // //
