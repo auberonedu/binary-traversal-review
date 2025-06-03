@@ -23,7 +23,15 @@ public class TraversalReview {
      * @return three times the sum of the nodes in the tree
      */
     public static int tripleSum(TreeNode node) {
-        return -1;
+        if (node == null) return 0;
+        
+        int sum = node.data;
+
+        sum += tripleSum(node.left) / 3;
+
+        sum += tripleSum(node.right) / 3;
+
+        return 3 * sum;
     }
 
     /**
