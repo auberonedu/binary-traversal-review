@@ -180,7 +180,12 @@ public class TraversalReview {
      */
     public static boolean noSingleChildren(TreeNode node) {
         if (node == null) return true;
-        return false;
+
+        // return false if only has 1 child
+        if ((node.left == null && node.right != null) || (node.left != null && node.right == null)){
+            return false;
+        }
+        return noSingleChildren(node.left) && noSingleChildren(node.right);
     }
 
     /**

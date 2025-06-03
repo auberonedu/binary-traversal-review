@@ -581,119 +581,119 @@ public class TraversalReviewTest {
     }
 
 
-    // //
-    // // Tests for noSingleChildren(TreeNode)
-    // //
+    //
+    // Tests for noSingleChildren(TreeNode)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
-    // @Test
-    // public void testNoSingleChildren_null() {
-    //     assertTrue(TraversalReview.noSingleChildren(null));
-    // }
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
+    @Test
+    public void testNoSingleChildren_null() {
+        assertTrue(TraversalReview.noSingleChildren(null));
+    }
 
-    // /**
-    //  * Tree:
-    //  *    7
-    //  *
-    //  * Single node (one level)
-    //  */
-    // @Test
-    // public void testNoSingleChildren_singleNode() {
-    //     TreeNode root = new TreeNode(7);
-    //     assertTrue(TraversalReview.noSingleChildren(root));
-    // }
+    /**
+     * Tree:
+     *    7
+     *
+     * Single node (one level)
+     */
+    @Test
+    public void testNoSingleChildren_singleNode() {
+        TreeNode root = new TreeNode(7);
+        assertTrue(TraversalReview.noSingleChildren(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         4
-    //  *        / \
-    //  *       2   6
-    //  *      / \ / \
-    //  *     1  3 5  8
-    //  *
-    //  * Perfectly full tree (every node has 0 or 2 children) → true
-    //  */
-    // @Test
-    // public void testNoSingleChildren_fullTree() {
-    //     TreeNode root = new TreeNode(4,
-    //         new TreeNode(2,
-    //             new TreeNode(1),
-    //             new TreeNode(3)
-    //         ),
-    //         new TreeNode(6,
-    //             new TreeNode(5),
-    //             new TreeNode(8)
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.noSingleChildren(root));
-    // }
+    /**
+     * Tree:
+     *         4
+     *        / \
+     *       2   6
+     *      / \ / \
+     *     1  3 5  8
+     *
+     * Perfectly full tree (every node has 0 or 2 children) → true
+     */
+    @Test
+    public void testNoSingleChildren_fullTree() {
+        TreeNode root = new TreeNode(4,
+            new TreeNode(2,
+                new TreeNode(1),
+                new TreeNode(3)
+            ),
+            new TreeNode(6,
+                new TreeNode(5),
+                new TreeNode(8)
+            )
+        );
+        assertTrue(TraversalReview.noSingleChildren(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         4
-    //  *        / \
-    //  *       2   6
-    //  *      /     \
-    //  *     1       7
-    //  *
-    //  * Node 2 has only one child (1) → false (three levels)
-    //  */
-    // @Test
-    // public void testNoSingleChildren_falseCase() {
-    //     TreeNode root = new TreeNode(4,
-    //         new TreeNode(2,
-    //             new TreeNode(1),
-    //             null
-    //         ),
-    //         new TreeNode(6, null,
-    //             new TreeNode(7)
-    //         )
-    //     );
-    //     assertFalse(TraversalReview.noSingleChildren(root));
-    // }
+    /**
+     * Tree:
+     *         4
+     *        / \
+     *       2   6
+     *      /     \
+     *     1       7
+     *
+     * Node 2 has only one child (1) → false (three levels)
+     */
+    @Test
+    public void testNoSingleChildren_falseCase() {
+        TreeNode root = new TreeNode(4,
+            new TreeNode(2,
+                new TreeNode(1),
+                null
+            ),
+            new TreeNode(6, null,
+                new TreeNode(7)
+            )
+        );
+        assertFalse(TraversalReview.noSingleChildren(root));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  * 
-    //  * Result: false (e.g., node 4 has only one child)
-    //  */
-    // @Test
-    // public void testNoSingleChildren_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertFalse(TraversalReview.noSingleChildren(root));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     * 
+     * Result: false (e.g., node 4 has only one child)
+     */
+    @Test
+    public void testNoSingleChildren_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertFalse(TraversalReview.noSingleChildren(root));
+    }
 
 
     // //
