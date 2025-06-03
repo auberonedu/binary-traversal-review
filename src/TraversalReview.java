@@ -100,9 +100,8 @@ public class TraversalReview {
     public static int evenMax(TreeNode node) {
         
         int min = Integer.MIN_VALUE;
-        if (node == null){
-        return min;
-        }
+        if (node == null) return min;
+        
 
         // Set currentEvenMax as Integer.MIN_VALUE and if statement to find even nodes
         int currentEvenMax = min;
@@ -144,7 +143,17 @@ public class TraversalReview {
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
-        return false;
+        if (node == null) return true;
+
+        // Check if nodes of left and right are not null and smaller than their parients -> return false
+        if (node.left != null && (node.left.data <= node.data)){
+            return false;
+        }
+        if (node.right != null && (node.right.data <= node.data)){
+            return false;
+        }
+
+        return isIncreasing(node.left) && isIncreasing(node.right);
     } 
 
     /**
@@ -170,6 +179,7 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
+        if (node == null) return true;
         return false;
     }
 

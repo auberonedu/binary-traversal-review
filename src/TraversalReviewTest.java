@@ -430,155 +430,155 @@ public class TraversalReviewTest {
     }
 
 
-    // //
-    // // Tests for isIncreasing(TreeNode)
-    // //
+    //
+    // Tests for isIncreasing(TreeNode)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
-    // @Test
-    // public void testIsIncreasing_null() {
-    //     assertTrue(TraversalReview.isIncreasing(null));
-    // }
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
+    @Test
+    public void testIsIncreasing_null() {
+        assertTrue(TraversalReview.isIncreasing(null));
+    }
 
-    // /**
-    //  * Tree:
-    //  *     12
-    //  *
-    //  * Single node (one level)
-    //  */
-    // @Test
-    // public void testIsIncreasing_singleNode() {
-    //     TreeNode root = new TreeNode(12);
-    //     assertTrue(TraversalReview.isIncreasing(root));
-    // }
+    /**
+     * Tree:
+     *     12
+     *
+     * Single node (one level)
+     */
+    @Test
+    public void testIsIncreasing_singleNode() {
+        TreeNode root = new TreeNode(12);
+        assertTrue(TraversalReview.isIncreasing(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         5
-    //  *        / \
-    //  *       7   8
-    //  *            \
-    //  *             10
-    //  *
-    //  * Every child > parent (three levels)
-    //  */
-    // @Test
-    // public void testIsIncreasing_trueCase() {
-    //     TreeNode root = new TreeNode(5,
-    //         new TreeNode(7),
-    //         new TreeNode(8, null,
-    //             new TreeNode(10)
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.isIncreasing(root));
-    // }
+    /**
+     * Tree:
+     *         5
+     *        / \
+     *       7   8
+     *            \
+     *             10
+     *
+     * Every child > parent (three levels)
+     */
+    @Test
+    public void testIsIncreasing_trueCase() {
+        TreeNode root = new TreeNode(5,
+            new TreeNode(7),
+            new TreeNode(8, null,
+                new TreeNode(10)
+            )
+        );
+        assertTrue(TraversalReview.isIncreasing(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         5
-    //  *        / \
-    //  *       3   8
-    //  *      /     \
-    //  *     2       9
-    //  *
-    //  * Left child (3) < parent (5) → false (extended to three levels)
-    //  */
-    // @Test
-    // public void testIsIncreasing_falseDirectChild() {
-    //     TreeNode root = new TreeNode(5,
-    //         new TreeNode(3, new TreeNode(2), null),
-    //         new TreeNode(8, null,
-    //             new TreeNode(9)
-    //         )
-    //     );
-    //     assertFalse(TraversalReview.isIncreasing(root));
-    // }
+    /**
+     * Tree:
+     *         5
+     *        / \
+     *       3   8
+     *      /     \
+     *     2       9
+     *
+     * Left child (3) < parent (5) → false (extended to three levels)
+     */
+    @Test
+    public void testIsIncreasing_falseDirectChild() {
+        TreeNode root = new TreeNode(5,
+            new TreeNode(3, new TreeNode(2), null),
+            new TreeNode(8, null,
+                new TreeNode(9)
+            )
+        );
+        assertFalse(TraversalReview.isIncreasing(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         4
-    //  *        / \
-    //  *       5   6
-    //  *      /     \
-    //  *     3       7
-    //  *
-    //  * Node 3 < parent 5 → false (three levels)
-    //  */
-    // @Test
-    // public void testIsIncreasing_falseDeepChild() {
-    //     TreeNode root = new TreeNode(4,
-    //         new TreeNode(5,
-    //             new TreeNode(3),
-    //             null
-    //         ),
-    //         new TreeNode(6, null,
-    //             new TreeNode(7)
-    //         )
-    //     );
-    //     assertFalse(TraversalReview.isIncreasing(root));
-    // }
+    /**
+     * Tree:
+     *         4
+     *        / \
+     *       5   6
+     *      /     \
+     *     3       7
+     *
+     * Node 3 < parent 5 → false (three levels)
+     */
+    @Test
+    public void testIsIncreasing_falseDeepChild() {
+        TreeNode root = new TreeNode(4,
+            new TreeNode(5,
+                new TreeNode(3),
+                null
+            ),
+            new TreeNode(6, null,
+                new TreeNode(7)
+            )
+        );
+        assertFalse(TraversalReview.isIncreasing(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         5
-    //  *        / \
-    //  *       5   6
-    //  *      /
-    //  *     7
-    //  *
-    //  * Left child equals parent → not strictly greater → false (extended to three levels)
-    //  */
-    // @Test
-    // public void testIsIncreasing_equalValues() {
-    //     TreeNode root = new TreeNode(5,
-    //         new TreeNode(5, new TreeNode(7), null),
-    //         new TreeNode(6)
-    //     );
-    //     assertFalse(TraversalReview.isIncreasing(root));
-    // }
+    /**
+     * Tree:
+     *         5
+     *        / \
+     *       5   6
+     *      /
+     *     7
+     *
+     * Left child equals parent → not strictly greater → false (extended to three levels)
+     */
+    @Test
+    public void testIsIncreasing_equalValues() {
+        TreeNode root = new TreeNode(5,
+            new TreeNode(5, new TreeNode(7), null),
+            new TreeNode(6)
+        );
+        assertFalse(TraversalReview.isIncreasing(root));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  * 
-    //  * Result: false (1 < 2, for example)
-    //  */
-    // @Test
-    // public void testIsIncreasing_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertFalse(TraversalReview.isIncreasing(root));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     * 
+     * Result: false (1 < 2, for example)
+     */
+    @Test
+    public void testIsIncreasing_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertFalse(TraversalReview.isIncreasing(root));
+    }
 
 
     // //
