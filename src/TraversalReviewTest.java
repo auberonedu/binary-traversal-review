@@ -295,139 +295,139 @@ public class TraversalReviewTest {
      * Tree:
      *   null (empty tree)
      */
-    // @Test
-    // public void testEvenMax_null() {
-    //     assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(null));
-    // }
+    @Test
+    public void testEvenMax_null() {
+        assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(null));
+    }
 
-    // /**
-    //  * Tree:
-    //  *     5
-    //  *
-    //  * Single odd node (one level)
-    //  */
-    // @Test
-    // public void testEvenMax_singleOdd() {
-    //     TreeNode root = new TreeNode(5);
-    //     assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(root));
-    // }
+    /**
+     * Tree:
+     *     5
+     *
+     * Single odd node (one level)
+     */
+    @Test
+    public void testEvenMax_singleOdd() {
+        TreeNode root = new TreeNode(5);
+        assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *     8
-    //  *
-    //  * Single even node (one level)
-    //  */
-    // @Test
-    // public void testEvenMax_singleEven() {
-    //     TreeNode root = new TreeNode(8);
-    //     assertEquals(8, TraversalReview.evenMax(root));
-    // }
+    /**
+     * Tree:
+     *     8
+     *
+     * Single even node (one level)
+     */
+    @Test
+    public void testEvenMax_singleEven() {
+        TreeNode root = new TreeNode(8);
+        assertEquals(8, TraversalReview.evenMax(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         10
-    //  *        /  \
-    //  *       3    14
-    //  *            / \
-    //  *          -2   7
-    //  *
-    //  * Mixed even and odd (three levels)
-    //  */
-    // @Test
-    // public void testEvenMax_mixedValues() {
-    //     TreeNode root = new TreeNode(10,
-    //         new TreeNode(3),
-    //         new TreeNode(14,
-    //             new TreeNode(-2),
-    //             new TreeNode(7)
-    //         )
-    //     );
-    //     // Even values: 10, 14, -2 → max = 14
-    //     assertEquals(14, TraversalReview.evenMax(root));
-    // }
+    /**
+     * Tree:
+     *         10
+     *        /  \
+     *       3    14
+     *            / \
+     *          -2   7
+     *
+     * Mixed even and odd (three levels)
+     */
+    @Test
+    public void testEvenMax_mixedValues() {
+        TreeNode root = new TreeNode(10,
+            new TreeNode(3),
+            new TreeNode(14,
+                new TreeNode(-2),
+                new TreeNode(7)
+            )
+        );
+        // Even values: 10, 14, -2 → max = 14
+        assertEquals(14, TraversalReview.evenMax(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         -8
-    //  *         / \
-    //  *       -4  -12
-    //  *       /
-    //  *     -16
-    //  *
-    //  * All even negative (three levels)
-    //  */
-    // @Test
-    // public void testEvenMax_allEvenNegative() {
-    //     TreeNode root = new TreeNode(-8,
-    //         new TreeNode(-4,
-    //             new TreeNode(-16),
-    //             null
-    //         ),
-    //         new TreeNode(-12)
-    //     );
-    //     // Even values: -8, -4, -16, -12 → max = -4
-    //     assertEquals(-4, TraversalReview.evenMax(root));
-    // }
+    /**
+     * Tree:
+     *         -8
+     *         / \
+     *       -4  -12
+     *       /
+     *     -16
+     *
+     * All even negative (three levels)
+     */
+    @Test
+    public void testEvenMax_allEvenNegative() {
+        TreeNode root = new TreeNode(-8,
+            new TreeNode(-4,
+                new TreeNode(-16),
+                null
+            ),
+            new TreeNode(-12)
+        );
+        // Even values: -8, -4, -16, -12 → max = -4
+        assertEquals(-4, TraversalReview.evenMax(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         9
-    //  *        / \
-    //  *       7   5
-    //  *      /     \
-    //  *     3       1
-    //  *
-    //  * No even values at all (extended to three levels)
-    //  */
-    // @Test
-    // public void testEvenMax_noEvenValues() {
-    //     TreeNode root = new TreeNode(9,
-    //         new TreeNode(7, new TreeNode(3), null),
-    //         new TreeNode(5, null, new TreeNode(1))
-    //     );
-    //     assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(root));
-    // }
+    /**
+     * Tree:
+     *         9
+     *        / \
+     *       7   5
+     *      /     \
+     *     3       1
+     *
+     * No even values at all (extended to three levels)
+     */
+    @Test
+    public void testEvenMax_noEvenValues() {
+        TreeNode root = new TreeNode(9,
+            new TreeNode(7, new TreeNode(3), null),
+            new TreeNode(5, null, new TreeNode(1))
+        );
+        assertEquals(Integer.MIN_VALUE, TraversalReview.evenMax(root));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  * 
-    //  * Maximum even value: 8
-    //  */
-    // @Test
-    // public void testEvenMax_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertEquals(8, TraversalReview.evenMax(root));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     * 
+     * Maximum even value: 8
+     */
+    @Test
+    public void testEvenMax_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertEquals(8, TraversalReview.evenMax(root));
+    }
 
 
     // //
