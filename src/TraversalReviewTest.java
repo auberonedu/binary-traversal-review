@@ -803,166 +803,166 @@ public class TraversalReviewTest {
     }
 
 
-    // //
-    // // Tests for hasNonDivisible(TreeNode, int)
-    // //
+    //
+    // Tests for hasNonDivisible(TreeNode, int)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
-    // @Test
-    // public void testHasNonDivisible_null() {
-    //     // If node is null, should return false
-    //     assertFalse(TraversalReview.hasNonDivisible(null, 5));
-    // }
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
+    @Test
+    public void testHasNonDivisible_null() {
+        // If node is null, should return false
+        assertFalse(TraversalReview.hasNonDivisible(null, 5));
+    }
 
-    // /**
-    //  * Tree:
-    //  *       9
-    //  *      / \
-    //  *     3   6
-    //  *    / \
-    //  *   12  15
-    //  *
-    //  * All values divisible by 3 (extended to three levels)
-    //  */
-    // @Test
-    // public void testHasNonDivisible_allDivisible() {
-    //     TreeNode root = new TreeNode(9,
-    //         new TreeNode(3,
-    //             new TreeNode(12),
-    //             new TreeNode(15)
-    //         ),
-    //         new TreeNode(6)
-    //     );
-    //     assertFalse(TraversalReview.hasNonDivisible(root, 3));
-    // }
+    /**
+     * Tree:
+     *       9
+     *      / \
+     *     3   6
+     *    / \
+     *   12  15
+     *
+     * All values divisible by 3 (extended to three levels)
+     */
+    @Test
+    public void testHasNonDivisible_allDivisible() {
+        TreeNode root = new TreeNode(9,
+            new TreeNode(3,
+                new TreeNode(12),
+                new TreeNode(15)
+            ),
+            new TreeNode(6)
+        );
+        assertFalse(TraversalReview.hasNonDivisible(root, 3));
+    }
 
-    // /**
-    //  * Tree:
-    //  *         9
-    //  *        / \
-    //  *       3   5
-    //  *      /     \
-    //  *     6       10
-    //  *
-    //  * Node 5 not divisible by 3
-    //  */
-    // @Test
-    // public void testHasNonDivisible_someNotDivisible() {
-    //     TreeNode root = new TreeNode(9,
-    //         new TreeNode(3, new TreeNode(6), null),
-    //         new TreeNode(5, null,
-    //             new TreeNode(10)
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.hasNonDivisible(root, 3));
-    // }
+    /**
+     * Tree:
+     *         9
+     *        / \
+     *       3   5
+     *      /     \
+     *     6       10
+     *
+     * Node 5 not divisible by 3
+     */
+    @Test
+    public void testHasNonDivisible_someNotDivisible() {
+        TreeNode root = new TreeNode(9,
+            new TreeNode(3, new TreeNode(6), null),
+            new TreeNode(5, null,
+                new TreeNode(10)
+            )
+        );
+        assertTrue(TraversalReview.hasNonDivisible(root, 3));
+    }
 
-    // /**
-    //  * Tree:
-    //  *        10
-    //  *       /  \
-    //  *     -20   30
-    //  *      /
-    //  *    -40
-    //  *
-    //  * All values divisible by 10
-    //  */
-    // @Test
-    // public void testHasNonDivisible_negativeAndPositive() {
-    //     TreeNode root = new TreeNode(10,
-    //         new TreeNode(-20,
-    //             new TreeNode(-40),
-    //             null
-    //         ),
-    //         new TreeNode(30)
-    //     );
-    //     assertFalse(TraversalReview.hasNonDivisible(root, 10));
-    // }
+    /**
+     * Tree:
+     *        10
+     *       /  \
+     *     -20   30
+     *      /
+     *    -40
+     *
+     * All values divisible by 10
+     */
+    @Test
+    public void testHasNonDivisible_negativeAndPositive() {
+        TreeNode root = new TreeNode(10,
+            new TreeNode(-20,
+                new TreeNode(-40),
+                null
+            ),
+            new TreeNode(30)
+        );
+        assertFalse(TraversalReview.hasNonDivisible(root, 10));
+    }
 
-    // /**
-    //  * Tree:
-    //  *        8
-    //  *       / \
-    //  *      4   16
-    //  *     /     \
-    //  *    12      20
-    //  *
-    //  * All values divisible by 4 
-    //  */
-    // @Test
-    // public void testHasNonDivisible_allDivisibleByFour() {
-    //     TreeNode root = new TreeNode(8,
-    //         new TreeNode(4, new TreeNode(12), null),
-    //         new TreeNode(16, null,
-    //             new TreeNode(20)
-    //         )
-    //     );
-    //     assertFalse(TraversalReview.hasNonDivisible(root, 4));
-    // }
+    /**
+     * Tree:
+     *        8
+     *       / \
+     *      4   16
+     *     /     \
+     *    12      20
+     *
+     * All values divisible by 4 
+     */
+    @Test
+    public void testHasNonDivisible_allDivisibleByFour() {
+        TreeNode root = new TreeNode(8,
+            new TreeNode(4, new TreeNode(12), null),
+            new TreeNode(16, null,
+                new TreeNode(20)
+            )
+        );
+        assertFalse(TraversalReview.hasNonDivisible(root, 4));
+    }
 
-    // /**
-    //  * Tree:
-    //  *        8
-    //  *       / \
-    //  *      4   9
-    //  *     /     \
-    //  *    12      15
-    //  *
-    //  * Node 9 not divisible by 4
-    //  */
-    // @Test
-    // public void testHasNonDivisible_mixedDivisibility() {
-    //     TreeNode root = new TreeNode(8,
-    //         new TreeNode(4, new TreeNode(12), null),
-    //         new TreeNode(9, null,
-    //             new TreeNode(15)
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.hasNonDivisible(root, 4));
-    // }
+    /**
+     * Tree:
+     *        8
+     *       / \
+     *      4   9
+     *     /     \
+     *    12      15
+     *
+     * Node 9 not divisible by 4
+     */
+    @Test
+    public void testHasNonDivisible_mixedDivisibility() {
+        TreeNode root = new TreeNode(8,
+            new TreeNode(4, new TreeNode(12), null),
+            new TreeNode(9, null,
+                new TreeNode(15)
+            )
+        );
+        assertTrue(TraversalReview.hasNonDivisible(root, 4));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  *
-    //  * k = 3
-    //  */
-    // @Test
-    // public void testHasNonDivisible_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertTrue(TraversalReview.hasNonDivisible(root, 3));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     *
+     * k = 3
+     */
+    @Test
+    public void testHasNonDivisible_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertTrue(TraversalReview.hasNonDivisible(root, 3));
+    }
 
 
     // //
