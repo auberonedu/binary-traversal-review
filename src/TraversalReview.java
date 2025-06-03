@@ -124,7 +124,10 @@ public class TraversalReview {
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
-        return false;
+        if (node == null) return true;
+        if (node.left != null && node.left.data <= node.data) return false;
+        if (node.right != null && node.right.data <= node.data) return false;
+        return isIncreasing(node.left) && isIncreasing(node.right);
     } 
 
     /**
