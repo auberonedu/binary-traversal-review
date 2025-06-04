@@ -7,15 +7,15 @@ public class TraversalReview {
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Result: 3*(-9+2+7+4+-6+1+5+-3+8+33+77) = 357
      * 
@@ -23,7 +23,16 @@ public class TraversalReview {
      * @return three times the sum of the nodes in the tree
      */
     public static int tripleSum(TreeNode node) {
-        return -1;
+        if (node == null)
+            return 0;
+
+        int sum = 0;
+        if (node != null) {
+            sum = 3 * node.data;
+        }
+
+        return sum + tripleSum(node.left) + tripleSum(node.right);
+
     }
 
     /**
@@ -33,15 +42,15 @@ public class TraversalReview {
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * 
      * Result: 2+7+4+1+5+8+33+77 = 137
@@ -50,25 +59,37 @@ public class TraversalReview {
      * @return the sum of the positive values in the tree
      */
     public static int positiveSum(TreeNode node) {
-        return -1;
+        if (node == null)
+            return 0;
+
+        int sum = 0;
+        if (node.data > 0) {
+            sum += node.data;
+        }
+
+        sum += positiveSum(node.left);
+        sum += positiveSum(node.right);
+
+        return sum;
     }
 
     /**
      * Returns the maximum even value in the tree.
      * 
-     * If node is null or there are no even values in the tree, returns Integer.MIN_VALUE.
+     * If node is null or there are no even values in the tree, returns
+     * Integer.MIN_VALUE.
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Result: 8
      * 
@@ -76,7 +97,18 @@ public class TraversalReview {
      * @return
      */
     public static int evenMax(TreeNode node) {
-        return Integer.MIN_VALUE;
+        if (node == null)
+            return Integer.MIN_VALUE;
+
+        int max = Integer.MIN_VALUE;
+        if (node.data % 2 == 0 && node.data > max) {
+            max = node.data;
+        }
+
+        int leftMax = evenMax(node.left);
+        int rightMax = evenMax(node.right);
+
+        return Math.max(max, Math.max(leftMax, rightMax));
     }
 
     /**
@@ -87,25 +119,37 @@ public class TraversalReview {
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Result: false (some of the child nodes have lower values than their parents
-     *                For example, 1 < 2).
+     * For example, 1 < 2).
      * 
      * @param node the root of the tree
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
-        return false;
-    } 
+        if (node == null) {
+            return true;
+        }
+
+        if (node.left != null && node.left.data <= node.data) {
+            return false;
+        }
+
+        if (node.right != null && node.right.data <= node.data) {
+            return false;
+        }
+
+        return isIncreasing(node.left) && isIncreasing(node.right);
+    }
 
     /**
      * Returns whether every node in the tree has either 0 or 2 children.
@@ -114,15 +158,15 @@ public class TraversalReview {
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Result: false (some nodes have only one child. For example, the 4 node)
      * 
@@ -130,7 +174,13 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
-        return false;
+        if (node == null)
+            return true;
+
+        if ((node.left == null && node.right != null) || (node.left != null && node.right == null)) {
+            return false;
+        }
+        return noSingleChildren(node.left) && noSingleChildren(node.right);
     }
 
     /**
@@ -140,15 +190,15 @@ public class TraversalReview {
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Result: true (there is at least one zero in the tree)
      * 
@@ -156,31 +206,40 @@ public class TraversalReview {
      * @return whether there is it least one zero value in the tree.
      */
     public static boolean hasZero(TreeNode node) {
-        return false;
+        if (node == null)
+            return false;
+
+        if (node.data == 0) {
+            return true;
+        }
+
+        return hasZero(node.left) || hasZero(node.right);
     }
 
     /**
-     * Returns whether there exists at least one value in the tree that is not divisible by k.
+     * Returns whether there exists at least one value in the tree that is not
+     * divisible by k.
      * 
      * If node is null, returns false.
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Example k: 3
-     * Result: true (some nodes in the tree have values not divisible by 3. For example, 5)
+     * Result: true (some nodes in the tree have values not divisible by 3. For
+     * example, 5)
      * 
      * @param node the root of the tree
-     * @param k the value to check for divisibility by
+     * @param k    the value to check for divisibility by
      * @return whether every value is divisible by k
      */
     public static boolean hasNonDivisible(TreeNode node, int k) {
@@ -194,15 +253,15 @@ public class TraversalReview {
      * 
      * Example:
      * 
-     *             -9
-     *             / \
-     *            2   5
-     *           / \   \
-     *          7   1  -3
-     *         /       / \
-     *        4       8  33
-     *         \        /  \
-     *         -6      0    77
+     * -9
+     * / \
+     * 2 5
+     * / \ \
+     * 7 1 -3
+     * / / \
+     * 4 8 33
+     * \ / \
+     * -6 0 77
      * 
      * Result: "4-6721-958-303377"
      * 
