@@ -25,11 +25,13 @@ public class TraversalReview {
     public static int tripleSum(TreeNode node) {
         if(node == null ) return 0;
 
-        int sumLeft = tripleSum(node.left) / 3;   // actual sum of node left and right
-        int sumRight = tripleSum(node.right) / 3;
+        // int sumLeft = tripleSum(node.left) / 3;   // actual sum of node left and right
+        // int sumRight = tripleSum(node.right) / 3;
 
-        int sum = node.data + sumLeft + sumRight;
-        return 3 * sum;
+        // int sum = node.data + sumLeft + sumRight;
+        // return 3 * sum;
+
+         return 3 * node.data + tripleSum(node.left) + tripleSum(node.right);
 
     }
 
