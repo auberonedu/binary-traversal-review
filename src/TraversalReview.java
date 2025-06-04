@@ -118,6 +118,7 @@ public class TraversalReview {
         // Solution 2
         // if (node == null) return Integer.MIN_VALUE;
         // return Math.max((Math.max(leftEvenMax, rightEvenMax)), node.data % 2 == 0 ? node.data : Integer.MIN_VALUE);
+
     }
 
     /**
@@ -222,6 +223,9 @@ public class TraversalReview {
 
         // return either of left or right node has at least 1 zero value
         return hasZero(node.left) || hasZero(node.right);
+
+        // Solution 2:
+        //return node != null && (node.data == 0 || hasZero(node.left) || hasZero(node.right));
     }
 
     /**
