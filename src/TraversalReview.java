@@ -23,7 +23,12 @@ public class TraversalReview {
      * @return three times the sum of the nodes in the tree
      */
     public static int tripleSum(TreeNode node) {
-        return -1;
+        if (node == null) return 0;
+        // int count = 3 * node.data;
+        // count += tripleSum(node.left);
+        // count += tripleSum(node.right);
+        // return count;
+        return (3 * node.data) + tripleSum(node.left) + tripleSum(node.right);
     }
 
     /**
@@ -50,7 +55,12 @@ public class TraversalReview {
      * @return the sum of the positive values in the tree
      */
     public static int positiveSum(TreeNode node) {
-        return -1;
+        if (node == null) return 0;
+        int sum = node.data;
+        if (node.data < 0) sum = 0;
+        sum += positiveSum(node.left);
+        sum += positiveSum(node.right);
+        return sum;
     }
 
     /**
@@ -76,7 +86,12 @@ public class TraversalReview {
      * @return
      */
     public static int evenMax(TreeNode node) {
-        return Integer.MIN_VALUE;
+        if (node == null) return Integer.MIN_VALUE;
+        int max = Integer.MIN_VALUE;
+        if (node.data % 2 == 0) max = Math.max(node.data, max);
+        max = Math.max(max, evenMax(node.left));
+        max = Math.max(max, evenMax(node.right));
+        return max;
     }
 
     /**
@@ -104,7 +119,15 @@ public class TraversalReview {
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
-        return false;
+        if (node == null || (node.left == null && node.right == null)) return true;
+        if (node.left != null && node.left.data <= node.data) {
+            return false;
+        } else if (node.right != null && node.right.data <= node.data) {
+            return false;
+        }
+        if(!isIncreasing(node.left)) return false;
+        if(!isIncreasing(node.right)) return false;
+        return true;
     } 
 
     /**
@@ -130,6 +153,12 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
+        if (node == null) return true;
+        if(!noSingleChildren(node.left)) return false;
+        if(!noSingleChildren(node.right)) return false;
+        if ((node.left == null && node.right == null) || (node.left != null && node.right != null)) {
+            return true;
+        }
         return false;
     }
 
@@ -156,6 +185,10 @@ public class TraversalReview {
      * @return whether there is it least one zero value in the tree.
      */
     public static boolean hasZero(TreeNode node) {
+        if (node == null) return false;
+        if (hasZero(node.left)) return true;
+        if (hasZero(node.right)) return true;
+        if (node.data == 0) return true;
         return false;
     }
 
@@ -184,6 +217,10 @@ public class TraversalReview {
      * @return whether every value is divisible by k
      */
     public static boolean hasNonDivisible(TreeNode node, int k) {
+        if (node == null) return false;        
+        if (node.data % k != 0) return true;
+        if (hasNonDivisible(node.left, k)) return true;
+        if (hasNonDivisible(node.right, k)) return true;
         return false;
     }
 
@@ -210,6 +247,11 @@ public class TraversalReview {
      * @return a string with all the values of the tree concatenated in-order
      */
     public static String concatenate(TreeNode node) {
-        return "";
+        if (node == null) return "";
+        String str = "";
+        str += concatenate(node.left);
+        str += String.valueOf(node.data);
+        str += concatenate(node.right);
+        return str;
     }
 }
