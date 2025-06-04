@@ -23,7 +23,10 @@ public class TraversalReview {
      * @return three times the sum of the nodes in the tree
      */
     public static int tripleSum(TreeNode node) {
-        return -1;
+        if(node == null) return 0;
+        int tripleRight = tripleSum(node.right);
+        int tripleLeft = tripleSum(node.left);
+        return (3 * node.data) + tripleLeft + tripleRight;
     }
 
     /**
@@ -50,7 +53,20 @@ public class TraversalReview {
      * @return the sum of the positive values in the tree
      */
     public static int positiveSum(TreeNode node) {
-        return -1;
+        if (node == null) {
+        return 0;
+        }
+
+        int sum = 0;
+
+        if (node.data > 0) {
+            sum += node.data;
+        }
+
+        sum += positiveSum(node.left);
+        sum += positiveSum(node.right);
+
+        return sum;
     }
 
     /**
@@ -104,7 +120,19 @@ public class TraversalReview {
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
+        if (node == null) {
+        return true;
+    }
+
+    if (node.left != null && node.left.data <= node.data) {
         return false;
+    }
+
+    if (node.right != null && node.right.data <= node.data) {
+        return false;
+    }
+
+    return isIncreasing(node.left) && isIncreasing(node.right);
     } 
 
     /**
