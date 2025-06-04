@@ -102,7 +102,6 @@ public class TraversalReview {
         int min = Integer.MIN_VALUE;
         if (node == null) return min;
         
-
         // Set currentEvenMax as Integer.MIN_VALUE and if statement to find even nodes
         int currentEvenMax = min;
         if (node.data % 2 == 0){
@@ -115,7 +114,10 @@ public class TraversalReview {
 
         // Return even max after comparing
         return Math.max(currentEvenMax, Math.max(leftEvenMax, rightEvenMax));
-        
+
+        // Solution 2
+        // if (node == null) return Integer.MIN_VALUE;
+        // return Math.max((Math.max(leftEvenMax, rightEvenMax)), node.data % 2 == 0 ? node.data : Integer.MIN_VALUE);
     }
 
     /**
@@ -290,7 +292,7 @@ public class TraversalReview {
         String leftNode = concatenate(node.left);
         String rightNode = concatenate(node.right);
 
-        // Return all value of the tree in-order
+        // Return all value of the in-order
         return leftNode + root + rightNode;
     }
 }
