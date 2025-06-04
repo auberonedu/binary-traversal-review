@@ -22,9 +22,24 @@ public class TraversalReview {
      * @param node the root of the tree
      * @return three times the sum of the nodes in the tree
      */
+   
     public static int tripleSum(TreeNode node) {
-        return -1;
+
+        return 3 * sumTree(node);
     }
+
+    private static int sumTree(TreeNode node) {
+        if (node == null) {
+            return 0;
+        }
+
+        int sum = 0;
+
+        sum = node.data + sumTree(node.left) + sumTree(node.right);
+
+        return sum;
+    }
+
 
     /**
      * Returns the sum of all positive values in the tree.
@@ -50,7 +65,18 @@ public class TraversalReview {
      * @return the sum of the positive values in the tree
      */
     public static int positiveSum(TreeNode node) {
-        return -1;
+        if (node == null){
+            return 0;
+        }
+
+        int sum = 0;
+        if(node.data > 0){
+            sum += node.data;
+        }
+        sum += positiveSum(node.left);
+        sum += positiveSum(node.right);
+      
+        return sum;
     }
 
     /**
@@ -76,7 +102,35 @@ public class TraversalReview {
      * @return
      */
     public static int evenMax(TreeNode node) {
+        if (node == null){
+            return Integer.MIN_VALUE;
+        }
+
+        // int leftSubTreeBiggest = evenMax(node.left);
+        // int rightSubTreeBiggest = evenMax(node.right);
+
+        // int biggest = Integer.MIN_VALUE;
+        //we can write like this....
+        // int biggest = Math.max(leftSubTreeBiggest, rightSubTreeBiggest);
+
+        // we need this....
+
+         // if(leftSubTreeBiggest < rightSubTreeBiggest){
+        //     biggest = rightSubTreeBiggest;
+        // }
+
+        //or we can write like this....
+        int biggest = Math.max(evenMax(node.left), evenMax(node.right));
+
+
+       
+        //we need this in all of the them to put the value od node.data in biggest
+        if(node.data > biggest && node.data % 2 == 0){
+            biggest = node.data;
+        }
+
         return Integer.MIN_VALUE;
+
     }
 
     /**
@@ -156,7 +210,24 @@ public class TraversalReview {
      * @return whether there is it least one zero value in the tree.
      */
     public static boolean hasZero(TreeNode node) {
-        return false;
+        // if(node == null) return false;
+
+        // if(node.data == 0){
+        //     return true;
+        // }
+
+        // if(hasZero(node.left)){
+        //     return true;
+        // }
+
+        // if(hasZero(node.right)){
+        //     return true;
+        // }
+
+        // return false;
+
+        return node != null && (node.data == 0 || hasZero(node.left) || hasZero(node.right));
+
     }
 
     /**
