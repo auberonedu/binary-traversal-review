@@ -23,7 +23,16 @@ public class TraversalReview {
      * @return three times the sum of the nodes in the tree
      */
     public static int tripleSum(TreeNode node) {
-        return -1;
+        if(node == null ) return 0;
+
+        // int sumLeft = tripleSum(node.left) / 3;   // actual sum of node left and right
+        // int sumRight = tripleSum(node.right) / 3;
+
+        // int sum = node.data + sumLeft + sumRight;
+        // return 3 * sum;
+
+         return 3 * node.data + tripleSum(node.left) + tripleSum(node.right);
+
     }
 
     /**
@@ -50,7 +59,16 @@ public class TraversalReview {
      * @return the sum of the positive values in the tree
      */
     public static int positiveSum(TreeNode node) {
-        return -1;
+        if(node == null ) return 0;
+        
+        int sum = 0;
+        if(node.data > 0) {
+            sum = sum + node.data;
+        }
+
+        sum += positiveSum(node.left);
+        sum += positiveSum(node.right);
+        return sum;
     }
 
     /**
@@ -76,7 +94,26 @@ public class TraversalReview {
      * @return
      */
     public static int evenMax(TreeNode node) {
-        return Integer.MIN_VALUE;
+        if(node == null ) return Integer.MIN_VALUE;
+
+        int currentMax = node.data;
+        if(node.data % 2 == 0) {
+            currentMax = node.data;
+        } else {
+            currentMax = Integer.MIN_VALUE;
+        }
+
+        int leftMax = evenMax(node.left);
+        int rightMax = evenMax(node.right);
+
+        if(leftMax > currentMax) {
+            currentMax = leftMax;
+        }
+
+        if(rightMax > currentMax) {
+            currentMax = rightMax;
+        }
+        return currentMax;
     }
 
     /**
@@ -104,8 +141,20 @@ public class TraversalReview {
      * @return whether all child nodes have strictly greater values than the parents
      */
     public static boolean isIncreasing(TreeNode node) {
-        return false;
-    } 
+        if(node == null || node.left == null && node.right == null) return true;
+
+        if(node.left != null) {
+            if(node.left.data <= node.data) {
+                return false;
+            }
+        }
+        if(node.right != null) {
+            if(node.right.data <= node.data) {
+                return false;
+            }
+        }
+        return isIncreasing(node.left) && isIncreasing(node.right);
+    }
 
     /**
      * Returns whether every node in the tree has either 0 or 2 children.
@@ -130,9 +179,14 @@ public class TraversalReview {
      * @return whether every node has 0 or 2 children
      */
     public static boolean noSingleChildren(TreeNode node) {
-        return false;
-    }
-
+        if(node == null) return true;
+        // note: this strcuture of solving this problem is called guard clauses.
+        if((node.left == null && node.right != null) || (node.left != null && node.right == null)) {
+            return false;
+            }
+            return noSingleChildren(node.left) && noSingleChildren(node.right);
+        }
+    
     /**
      * Returns whether at least one of the values in the tree is zero.
      * 
@@ -156,7 +210,12 @@ public class TraversalReview {
      * @return whether there is it least one zero value in the tree.
      */
     public static boolean hasZero(TreeNode node) {
-        return false;
+        if(node == null) return false;
+
+        if(node.data == 0 ) {
+            return true;
+        }
+        return hasZero(node.left) || hasZero(node.right);
     }
 
     /**
@@ -184,7 +243,12 @@ public class TraversalReview {
      * @return whether every value is divisible by k
      */
     public static boolean hasNonDivisible(TreeNode node, int k) {
-        return false;
+        if(node == null) return false;
+
+        if(node.data % k != 0 ) {
+            return true;
+        }
+        return hasNonDivisible(node.left, k) || hasNonDivisible(node.right, k);
     }
 
     /**
@@ -210,6 +274,17 @@ public class TraversalReview {
      * @return a string with all the values of the tree concatenated in-order
      */
     public static String concatenate(TreeNode node) {
-        return "";
+        // left
+        //visit node
+        // right
+        if(node == null) return "";
+
+
+        String left = concatenate(node.left);
+        String right = concatenate(node.right);
+        String combined = left + node.data + right;
+       
+
+        return combined;
     }
 }
