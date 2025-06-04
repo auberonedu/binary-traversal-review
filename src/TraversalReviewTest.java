@@ -965,141 +965,141 @@ public class TraversalReviewTest {
     }
 
 
-    // //
-    // // Tests for concatenate(TreeNode)
-    // //
+    //
+    // Tests for concatenate(TreeNode)
+    //
 
-    // /**
-    //  * Tree:
-    //  *   null (empty tree)
-    //  */
-    // @Test
-    // public void testConcatenate_null() {
-    //     assertEquals("", TraversalReview.concatenate(null));
-    // }
+    /**
+     * Tree:
+     *   null (empty tree)
+     */
+    @Test
+    public void testConcatenate_null() {
+        assertEquals("", TraversalReview.concatenate(null));
+    }
 
-    // /**
-    //  * Tree:
-    //  *     7
-    //  *
-    //  * Single node (one level)
-    //  */
-    // @Test
-    // public void testConcatenate_singleNode() {
-    //     TreeNode root = new TreeNode(7);
-    //     assertEquals("7", TraversalReview.concatenate(root));
-    // }
+    /**
+     * Tree:
+     *     7
+     *
+     * Single node (one level)
+     */
+    @Test
+    public void testConcatenate_singleNode() {
+        TreeNode root = new TreeNode(7);
+        assertEquals("7", TraversalReview.concatenate(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *       5
-    //  *      /
-    //  *     3
-    //  *    /
-    //  *   1
-    //  *
-    //  * Left-leaning chain (three levels)
-    //  */
-    // @Test
-    // public void testConcatenate_leftChain() {
-    //     TreeNode root = new TreeNode(5,
-    //         new TreeNode(3,
-    //             new TreeNode(1),
-    //             null
-    //         ),
-    //         null
-    //     );
-    //     // In-order: 1, 3, 5 → "135"
-    //     assertEquals("135", TraversalReview.concatenate(root));
-    // }
+    /**
+     * Tree:
+     *       5
+     *      /
+     *     3
+     *    /
+     *   1
+     *
+     * Left-leaning chain (three levels)
+     */
+    @Test
+    public void testConcatenate_leftChain() {
+        TreeNode root = new TreeNode(5,
+            new TreeNode(3,
+                new TreeNode(1),
+                null
+            ),
+            null
+        );
+        // In-order: 1, 3, 5 → "135"
+        assertEquals("135", TraversalReview.concatenate(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *     2
-    //  *      \
-    //  *       4
-    //  *        \
-    //  *         6
-    //  *
-    //  * Right-leaning chain (three levels)
-    //  */
-    // @Test
-    // public void testConcatenate_rightChain() {
-    //     TreeNode root = new TreeNode(2, null,
-    //         new TreeNode(4, null,
-    //             new TreeNode(6)
-    //         )
-    //     );
-    //     // In-order: 2, 4, 6 → "246"
-    //     assertEquals("246", TraversalReview.concatenate(root));
-    // }
+    /**
+     * Tree:
+     *     2
+     *      \
+     *       4
+     *        \
+     *         6
+     *
+     * Right-leaning chain (three levels)
+     */
+    @Test
+    public void testConcatenate_rightChain() {
+        TreeNode root = new TreeNode(2, null,
+            new TreeNode(4, null,
+                new TreeNode(6)
+            )
+        );
+        // In-order: 2, 4, 6 → "246"
+        assertEquals("246", TraversalReview.concatenate(root));
+    }
 
-    // /**
-    //  * Tree:
-    //  *           10
-    //  *          /  \
-    //  *         2    8
-    //  *        / \    \
-    //  *       1   4    12
-    //  *            \
-    //  *             5
-    //  *
-    //  * Mixed structure (three levels)
-    //  */
-    // @Test
-    // public void testConcatenate_complexTree() {
-    //     TreeNode root = new TreeNode(10,
-    //         new TreeNode(2,
-    //             new TreeNode(1),
-    //             new TreeNode(4, null,
-    //                 new TreeNode(5)
-    //             )
-    //         ),
-    //         new TreeNode(8, null,
-    //             new TreeNode(12)
-    //         )
-    //     );
-    //     // In-order: 1, 2, 4, 5, 10, 8, 12 → "1245" + "10" + "8" + "12" = "124510812"
-    //     assertEquals("124510812", TraversalReview.concatenate(root));
-    // }
+    /**
+     * Tree:
+     *           10
+     *          /  \
+     *         2    8
+     *        / \    \
+     *       1   4    12
+     *            \
+     *             5
+     *
+     * Mixed structure (three levels)
+     */
+    @Test
+    public void testConcatenate_complexTree() {
+        TreeNode root = new TreeNode(10,
+            new TreeNode(2,
+                new TreeNode(1),
+                new TreeNode(4, null,
+                    new TreeNode(5)
+                )
+            ),
+            new TreeNode(8, null,
+                new TreeNode(12)
+            )
+        );
+        // In-order: 1, 2, 4, 5, 10, 8, 12 → "1245" + "10" + "8" + "12" = "124510812"
+        assertEquals("124510812", TraversalReview.concatenate(root));
+    }
 
-    // /**
-    //  * Javadoc Example Tree:
-    //  * 
-    //  *              -9
-    //  *             /   \
-    //  *            2     5
-    //  *           / \     \
-    //  *          7   1    -3
-    //  *         /         / \
-    //  *        4         8  33
-    //  *         \        /   \
-    //  *         -6     0    77
-    //  * 
-    //  * In-order concatenation: "4-6721-958-303377"
-    //  */
-    // @Test
-    // public void testConcatenate_javadocExample() {
-    //     TreeNode root = new TreeNode(-9,
-    //         new TreeNode(2,
-    //             new TreeNode(7,
-    //                 new TreeNode(4, null,
-    //                     new TreeNode(-6)
-    //                 ),
-    //                 null
-    //             ),
-    //             new TreeNode(1)
-    //         ),
-    //         new TreeNode(5, null,
-    //             new TreeNode(-3,
-    //                 new TreeNode(8),
-    //                 new TreeNode(33,
-    //                     new TreeNode(0),
-    //                     new TreeNode(77)
-    //                 )
-    //             )
-    //         )
-    //     );
-    //     assertEquals("4-6721-958-303377", TraversalReview.concatenate(root));
-    // }
+    /**
+     * Javadoc Example Tree:
+     * 
+     *              -9
+     *             /   \
+     *            2     5
+     *           / \     \
+     *          7   1    -3
+     *         /         / \
+     *        4         8  33
+     *         \        /   \
+     *         -6     0    77
+     * 
+     * In-order concatenation: "4-6721-958-303377"
+     */
+    @Test
+    public void testConcatenate_javadocExample() {
+        TreeNode root = new TreeNode(-9,
+            new TreeNode(2,
+                new TreeNode(7,
+                    new TreeNode(4, null,
+                        new TreeNode(-6)
+                    ),
+                    null
+                ),
+                new TreeNode(1)
+            ),
+            new TreeNode(5, null,
+                new TreeNode(-3,
+                    new TreeNode(8),
+                    new TreeNode(33,
+                        new TreeNode(0),
+                        new TreeNode(77)
+                    )
+                )
+            )
+        );
+        assertEquals("4-6721-958-303377", TraversalReview.concatenate(root));
+    }
 }
