@@ -91,7 +91,27 @@ public class TraversalReview {
      * @return
      */
     public static int evenMax(TreeNode node) {
-        return Integer.MIN_VALUE;
+        if (node == null) return Integer.MIN_VALUE;
+
+        int maxEven = Integer.MIN_VALUE;
+
+        if(node.data % 2 == 0){
+            maxEven = node.data;
+        }
+
+        int leftMax = evenMax(node.left);
+
+        int rightMax = evenMax(node.right);
+
+        if (leftMax % 2 == 0 && leftMax > maxEven) {
+            maxEven = leftMax;
+        }
+        if (rightMax % 2 == 0 && rightMax > maxEven) {
+            maxEven = rightMax;
+        }
+       
+
+        return maxEven;
     }
 
     /**
