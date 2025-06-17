@@ -24,22 +24,22 @@ public class TraversalReview {
      */
    
     public static int tripleSum(TreeNode node) {
-
-        return 3 * sumTree(node);
+        
+        return 3 * treeSum(node);
     }
 
-    private static int sumTree(TreeNode node) {
-        if (node == null) {
+    public static int treeSum(TreeNode node) {
+        if (node == null){
             return 0;
         }
 
-        int sum = 0;
+        int leftSum = treeSum(node.left);
+        int rightSum = treeSum(node.right);
 
-        sum = node.data + sumTree(node.left) + sumTree(node.right);
-
-        return sum;
+        return node.data + leftSum + rightSum;
     }
 
+  
 
     /**
      * Returns the sum of all positive values in the tree.
@@ -69,14 +69,19 @@ public class TraversalReview {
             return 0;
         }
 
+        int leftSum = positiveSum(node.left);
+        int rightSum = positiveSum(node.right);
+
         int sum = 0;
+
         if(node.data > 0){
-            sum += node.data;
+            sum += node.data;       
         }
-        sum += positiveSum(node.left);
-        sum += positiveSum(node.right);
-      
+        sum += leftSum + rightSum;
+
         return sum;
+
+        
     }
 
     /**
@@ -105,6 +110,15 @@ public class TraversalReview {
         if (node == null){
             return Integer.MIN_VALUE;
         }
+
+        int leftMax = evenMax(node.left);
+        int rightMax = evenMax(node.right);
+
+        if(node.data % 2 == 0 && node.data > leftMax && node.data > rightMax){
+            return node.data;
+        }
+
+
 
         // int leftSubTreeBiggest = evenMax(node.left);
         // int rightSubTreeBiggest = evenMax(node.right);
@@ -161,18 +175,19 @@ public class TraversalReview {
         if (node == null){
             return true;
         }
-
-        if (node.left != null && node.left.data <= node.data){
+        
+        if(node.left != null && node.left.data <= node.data){
             return false;
         }
-        
-        if (node.right != null && node.right.data <= node.data){
-            return false;   
-        }
-        
-        return isIncreasing(node.left) && isIncreasing(node.right);
-    }     
 
+        if(node.right != null && node.right.data <= node.data){
+            return false;
+        }
+
+        return isIncreasing(node.left) && isIncreasing(node.right);
+
+            
+    }
     /**
      * Returns whether every node in the tree has either 0 or 2 children.
      * 
@@ -199,17 +214,11 @@ public class TraversalReview {
         if (node == null){
             return true;
         }
-
-        if(node.left != null && node.right == null){
-            return false;
-
-        } 
-        
-        if (node.left == null && node.right != null){
+        if((node.left == null && node.right != null) || (node.left != null && node.right == null)){
             return false;
         }
-
         return noSingleChildren(node.left) && noSingleChildren(node.right);
+
     }
 
     /**
@@ -283,13 +292,12 @@ public class TraversalReview {
         if(node == null){
             return false;
         }
-
-        if(node.left.data % k == 0 && node.right.data % k == 0){
-            return false;
-        }else{
+        if(node.data % k != 0){
             return true;
         }
-        
+        return hasNonDivisible(node.left, k) || hasNonDivisible(node.right, k);
+
+
     }
 
     /**
@@ -319,7 +327,12 @@ public class TraversalReview {
         return "";
         }
 
-        return concatenate(node.left) + node.data + concatenate(node.right); 
+        String leftConcat = concatenate(node.left);
+        String rightConcat = concatenate(node.right);
+        String currentValue = String.valueOf(node.data);
+
+
+        return leftConcat + currentValue + rightConcat;
     }
     
 }
